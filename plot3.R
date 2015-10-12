@@ -16,21 +16,21 @@ plot3 <- function(rawDT){
 #   rawDT = data.frame(Date = rawDT[,Date], 
 #                      Data=rawDT[,Global_active_power])
 #   
-  tmp = ggplot(rawDT, aes(Date, Data1,fill="Sub_metering_1")) +
+  tmp = ggplot(rawDT, aes(Date, Data1,linetype="Sub_metering_1")) +
         geom_line() + # first plot  
-        geom_line(data=rawDT,aes(Date, Data2,fill="Sub_metering_2"),colour = 'red') + # add second plot
-        geom_line(data=rawDT,aes(Date, Data3,fill="Sub_metering_3"),colour = 'blue') + # add third plot
+        geom_line(data=rawDT,aes(Date, Data2,linetype="Sub_metering_2"),colour = 'red') + # add second plot
+        geom_line(data=rawDT,aes(Date, Data3,linetype="Sub_metering_3"),colour = 'blue') + # add third plot
         scale_x_datetime(breaks = date_breaks("1 day")
                          ,labels = date_format("%a") 
                         ) + # format x axes
         xlab("") +
         ylab("Energy sub metering") +
         scale_linetype_discrete(name = "") +
+        scale_shape_discrete(name="")+
         theme_bw() +
-        theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
-        #theme(panel.background = element_rect(fill = 'white', colour = 'black'))
-        # add legends
-        #theme(legend('topright', legend=c('Sub_metering_1','Sub_metering_2','Sub_metering_3'),col=c('black','red','blue'),lty=1))
+        theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+        theme(legend.position=c(1, 1), legend.justification = c(1, 1)) 
+
         #legend('topright', legend=c('Sub_metering_1','Sub_metering_2','Sub_metering_3'),col=c('black','red','blue'),lty=1)
   print(tmp)
 
