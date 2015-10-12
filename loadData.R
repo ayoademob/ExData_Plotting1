@@ -14,6 +14,9 @@ getConsumptionData <- function(filename){
   rawDT<-mutate(rawDT
                 ,Global_active_power=as.numeric(rawDT$Global_active_power)
                 ,Date=as.Date(rawDT$Date, format="%d/%m/%Y")
+                ,Sub_metering_1 = as.numeric(Sub_metering_1)
+                ,Sub_metering_2 = as.numeric(Sub_metering_2)
+                ,Sub_metering_3 = as.numeric(Sub_metering_3)
                 )
   rawDT
 }
