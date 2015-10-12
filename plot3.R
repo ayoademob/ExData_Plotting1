@@ -13,9 +13,7 @@ plot3 <- function(rawDT){
                     ,Data2=rawDT[,Sub_metering_2]
                     ,Data3=rawDT[,Sub_metering_3]
                     )
-#   rawDT = data.frame(Date = rawDT[,Date], 
-#                      Data=rawDT[,Global_active_power])
-#   
+
   tmp = ggplot(rawDT, aes(Date, Data1,linetype="Sub_metering_1")) +
         geom_line() + # first plot  
         geom_line(data=rawDT,aes(Date, Data2,linetype="Sub_metering_2"),colour = 'red') + # add second plot
@@ -29,7 +27,7 @@ plot3 <- function(rawDT){
         scale_shape_discrete(name="")+
         theme_bw() +
         theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
-        theme(legend.position=c(1, 1), legend.justification = c(1, 1)) 
+        theme(legend.position=c(1.02, 1.02), legend.justification = c(1, 1),legend.background = element_rect(colour = "black")) 
 
         #legend('topright', legend=c('Sub_metering_1','Sub_metering_2','Sub_metering_3'),col=c('black','red','blue'),lty=1)
   print(tmp)
